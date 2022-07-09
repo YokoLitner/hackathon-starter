@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToMany, JoinColumn, JoinTable } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToMany,
+  JoinTable,
+} from 'typeorm';
 import { Role } from './role.entity';
 
 @Entity('user')
@@ -16,10 +22,10 @@ export class User {
   password: string;
 
   @ManyToMany(() => Role, (role) => role.id, {
-    cascade: ['soft-remove']
+    cascade: ['soft-remove'],
   })
   @JoinTable({
-    name: "user_roles_role",
+    name: 'user_roles_role',
     joinColumn: { name: 'user_id', referencedColumnName: 'id' },
     inverseJoinColumn: { name: 'role_id', referencedColumnName: 'id' },
   })
