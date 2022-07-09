@@ -1,4 +1,10 @@
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Permission } from './permission.entity';
 
 @Entity('role')
@@ -13,7 +19,6 @@ export class Role {
     cascade: ['soft-remove'],
     onUpdate: 'NO ACTION',
   })
-
   @JoinTable({
     name: 'role_permissions_permission',
     joinColumn: { name: 'role_id', referencedColumnName: 'id' },

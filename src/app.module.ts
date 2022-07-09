@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { PostgresDataSource } from 'ormconfig';
 import { AppController } from './app.controller';
-import { UserModule } from './user/user.module';
 
 @Module({
-  imports: [UserModule],
+  imports: [TypeOrmModule.forRoot(PostgresDataSource)],
   controllers: [AppController],
   providers: [],
 })
-export class AppModule { }
+export class AppModule {}
